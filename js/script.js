@@ -18,6 +18,7 @@ function playMatch(){
     const playerHand = document.querySelector(".player-hand");
     const computerHand = document.querySelector(".computer-hand");
     const hands = document.querySelectorAll(".hands img");
+
             
 
 
@@ -25,31 +26,30 @@ function playMatch(){
         option.addEventListener("click", function() {
             const computerNum = Math.floor(Math.random() * 3);
             const computerChoice = computerOptions[computerNum];
-            console.log(computerNum)
-            console.log(computerChoice)
+
            
-            // setTimeout(() => {
+            setTimeout(() => {
                 //call compare hands function
                 computerHands(this.textContent, computerChoice);
 
                 playerHand.src = `./image/${this.textContent}.jpg`;
                 computerHand.src = `./image/${computerChoice}.jpg`;
-            // },2000);
+            },2000);
 
             
 
             //animation
-            playerHand.getElementsByClassName.animation = "shakePlayer 2s ease"
-            computerHand.getElementsByClassName.animation = "shakeComputer 2s ease"
+            playerHand.style.animation = "shakePlayer 2s ease"
+            computerHand.style.animation = "shakeComputer 2s ease"
         });
         
     });
 
-    // hands.forEach(hands => {
-    //     hands.addEventListener("animationend", function(){
-    //         this.style.animation = "";
-    //     })
-    // })
+    hands.forEach(hands => {
+        hands.addEventListener("animationend", function(){
+            this.style.animation = "";
+        })
+    })
 }
 playMatch();
 
@@ -63,52 +63,52 @@ function computerHands(playerChoice, computerChoice){
     if(playerChoice === "rock"){
         if(computerChoice === "scissors"){
             winner.textContent = "Player Wins";
-            // pScore++;
-            // updateScore();
+            pScore++;
+            updateScore();
             return;
         }
         else{
             winner.textContent = "Computer Wins";
-            // cScore++;
-            // updateScore();
+            cScore++;
+            updateScore();
             return; 
         }
     }
     if(playerChoice === "paper"){
         if(computerChoice === "scissors"){
             winner.textContent = "Computer Wins";
-            // cScore++;
-            // updateScore();
+            cScore++;
+            updateScore();
             return;
         }
         else{
             winner.textContent = "Player Wins";
-            // pScore++;
-            // updateScore();
+            pScore++;
+            updateScore();
             return; 
         }
     }
     if(playerChoice === "scissors"){
         if(computerChoice === "rock"){
             winner.textContent = "Computer Wins";
-            // cScore++;
-            // updateScore();
+            cScore++;
+            updateScore();
             return;
         }
         else{
             winner.textContent = "Player Wins";
-            // pScore++;
-            // updateScore();
+            pScore++;
+            updateScore();
             return; 
         }
     }
 }
 //score function
-// function updateScore(){
-//     const playerScore = document.querySelector(".player-score p");
-//     const computerScore = document.querySelector(".computer-score p");
+function updateScore(){
+    const playerScore = document.querySelector(".player-score p");
+    const computerScore = document.querySelector(".computer-score p");
 
-//     playerScore.textContent = pScore;
-//     computerScore.textContent = cScore;
+    playerScore.textContent = pScore;
+    computerScore.textContent = cScore;
 
-// }
+}
